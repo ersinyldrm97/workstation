@@ -38,10 +38,12 @@ button {
   width: 100%;
   font-size: 18px;
 }
+
 a {
   text-decoration: none;
   color: white;
 }
+
 a:visited{
   color: white;
 }
