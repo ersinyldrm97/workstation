@@ -130,7 +130,7 @@ function getBundleURL() {
   try {
     throw new Error();
   } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
     if (matches) {
       return getBaseURL(matches[0]);
     }
@@ -138,7 +138,7 @@ function getBundleURL() {
   return '/';
 }
 function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
 }
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
@@ -192,43 +192,24 @@ function Module(moduleName) {
   module.bundle.hotData = null;
 }
 module.bundle.Module = Module;
-var checkedAssets, assetsToAccept;
 var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53664" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54750" + '/');
   ws.onmessage = function (event) {
-    checkedAssets = {};
-    assetsToAccept = [];
     var data = JSON.parse(event.data);
     if (data.type === 'update') {
-      var handled = false;
+      data.assets.forEach(function (asset) {
+        hmrApply(global.parcelRequire, asset);
+      });
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
-          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-          if (didAccept) {
-            handled = true;
-          }
+          hmrAccept(global.parcelRequire, asset.id);
         }
       });
-
-      // Enable HMR for CSS by default.
-      handled = handled || data.assets.every(function (asset) {
-        return asset.type === 'css' && asset.generated.js;
-      });
-      if (handled) {
-        console.clear();
-        data.assets.forEach(function (asset) {
-          hmrApply(global.parcelRequire, asset);
-        });
-        assetsToAccept.forEach(function (v) {
-          hmrAcceptRun(v[0], v[1]);
-        });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
-      }
+      // Clear the console after HMR
+      console.clear();
     }
     if (data.type === 'reload') {
       ws.close();
@@ -277,7 +258,7 @@ function getParents(bundle, id) {
     for (d in modules[k][1]) {
       dep = modules[k][1][d];
       if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push(k);
+        parents.push(+k);
       }
     }
   }
@@ -299,28 +280,14 @@ function hmrApply(bundle, asset) {
     hmrApply(bundle.parent, asset);
   }
 }
-function hmrAcceptCheck(bundle, id) {
+function hmrAccept(bundle, id) {
   var modules = bundle.modules;
   if (!modules) {
     return;
   }
   if (!modules[id] && bundle.parent) {
-    return hmrAcceptCheck(bundle.parent, id);
+    return hmrAccept(bundle.parent, id);
   }
-  if (checkedAssets[id]) {
-    return;
-  }
-  checkedAssets[id] = true;
-  var cached = bundle.cache[id];
-  assetsToAccept.push([bundle, id]);
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    return true;
-  }
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAcceptCheck(global.parcelRequire, id);
-  });
-}
-function hmrAcceptRun(bundle, id) {
   var cached = bundle.cache[id];
   bundle.hotData = {};
   if (cached) {
@@ -340,6 +307,9 @@ function hmrAcceptRun(bundle, id) {
     });
     return true;
   }
+  return getParents(global.parcelRequire, id).some(function (id) {
+    return hmrAccept(global.parcelRequire, id);
+  });
 }
 },{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
 //# sourceMappingURL=/style.78032849.js.map

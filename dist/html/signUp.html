@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/style.78032849.css">
+    <link rel="stylesheet" href="/style.0c3fc8cc.css">
     <title> Sign Up</title>
   </head>
   <body>
@@ -37,12 +37,15 @@
         <button type="button" value="Cancel" onclick="required(); history.back();">Cancel</button>
       </div>
     </form>
-    <script>function required() {
-  var email = document.getElementById("email").value;
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  var repassword = document.getElementById("repassword").value;
-  if (email || username || password || repassword) return alert("Are you sure you wish to cancel register?");
-}</script>
+    <script>
+      function required() {
+        const email = document.getElementById("email").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const repassword = document.getElementById("repassword").value;   
+
+        if (email || username || password || repassword) return alert("Are you sure you wish to cancel register?");
+      }      
+    </script>
   </body>
 </html>
