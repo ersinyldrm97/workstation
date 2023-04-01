@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+  background: -webkit-linear-gradient(to right, #466594, #599543);
+  background: linear-gradient(to right, #599543, #466594);
+  color: whitesmoke;
+}
+
+h1 {
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 75%;
+}
+
+div.user-login {
+  position: absolute;
+  right: 175px;
+}
+
+div.user-register {
+  position: absolute;
+  right: 100px;
+}
