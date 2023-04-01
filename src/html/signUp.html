@@ -35,8 +35,8 @@
         
         <span id="Message"></span>
         
-        <button type="submit" value="submit" onclick="validatePassword();">Sign Up</button>
-        <button type="button" value="Cancel" onclick="required(); history.back();">Cancel</button>
+        <button type="submit" value="submit" onclick="validatePassword();" >Sign Up</button>
+        <button type="button" value="Cancel" onclick="required();">Cancel</button>
       </div>
 
     </form>
@@ -46,13 +46,36 @@
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;   
+        
+        // if (confirm(email || username || password || confirmPassword)) return alert("Are you sure you wish to cancel register?");
 
-        if (email || username || password || confirmPassword) return alert("Are you sure you wish to cancel register?");
+        if ((email || username || password || confirmPassword)) {
+          if (confirm("Are you sure you wish to cancel register?") == true)return history.back();
+        } else {
+          return history.back();
+        }
+        
+      }
+
+ 
+      function myFunction() {
+        var txt;
+        if (confirm("Press a button!")) {
+          txt = "You pressed OK!";
+        } else {
+          txt = "You pressed Cancel!";
+        }
+        document.getElementById("demo").innerHTML = txt;
       }
 
       function validatePassword() {
+        const email = document.getElementById('email').value;
+        const username = document.getElementById('username').value;
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
+        
+        if (email || !username || !password || !confirmPassword) return ("You need to enter your information for sign up!!");
+
         if (password != confirmPassword) {
          document.getElementById("Message").style.color = "Red";
          document.getElementById("Message").innerHTML = "Passwords do NOT match!";
