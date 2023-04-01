@@ -38,10 +38,12 @@ button {
   width: 100%;
   font-size: 18px;
 }
+
 a {
   text-decoration: none;
   color: white;
 }
+
 a:visited{
   color: white;
 }
@@ -61,6 +63,10 @@ button:hover {
 
 .mainContainer {
   padding: 16px;
+}
+
+.countDown {
+  padding: 24px;
 }
 
 .subcontainer {
@@ -100,4 +106,13 @@ span.forgotpassword a {
 
 .register a:link {
   text-decoration: none;
+}
+
+.countDown {
+  colot: white;
+  text-align: center;
+}
+
+.countDown a {
+  color: rgb(74, 146, 235);
 }
