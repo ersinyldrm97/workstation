@@ -15,15 +15,32 @@ header {
 
 ul {
   list-style-type: none;
-  margin-left: 75%;
+
 }
 
 div.user-login {
   position: absolute;
-  right: 175px;
+  z-index: 2;
+  right: 15%;
+  top: 0ic;
+  display: inline-block;
 }
 
+ul.user-unlogin {
+  margin-left: 80%;
+}
+
+
 div.user-register {
+  padding: 0;
   position: absolute;
   right: 100px;
+  top: 0ic;
+  margin-left: 75%;
+  display: inline-block;
 }
+
+ul.user-register {
+  margin-left: 45%;
+}
+
