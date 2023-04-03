@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/homePage.css">
-    <title>Home Page</title>
+    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <title>Booking</title>
     <body>
       <div class="header">
+        <div class="homepage">
+          <ul>
+            <li class="home">
+              <a id="home" data-funnel-trigger-home="header" href="index.html" title="Homepage">Homepage</a>
+            </li>
+          </ul>
+        </div>
         <div class="user-login">
           <ul class="user-unlogin">
             <li class="login">
@@ -16,11 +24,30 @@
         <div class="user-register">
           <ul class="user-unregister">
             <li class="register">
-              <a id="regsiter" data-funnel-trigger-register="header" href="./html/signUp.html" title="Register">Register</a>
+              <a id="register" data-funnel-trigger-register="header" href="./html/signUp.html" title="Register">Register</a>
             </li>
           </ul>
         </div>
-      </div>
+        <div class="about-company">
+          <ul class="company-about">
+            <li class="about">
+              <a id="about" data-funnel-trigger-about="header" href="./html/about.html" title="About">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="slider">
+          <div class="slider-content">
+            <div class="slider-item">
+              <a href="./html/car.html"><img src="../assets/img/car.jpg" alt="" style="width: 500px; height: 300px;"></a>
+            </div>
+            <div class="slider-item">
+              <a href="./html/flight.html"><img src="../assets/img/flight.jpg" alt="" style="width: 500px; height: 300px;"></a>
+            </div>
+            <div class="slider-item">
+              <a href="./html/flight.html"><img src="../assets/img/hotel.jpg" alt="" style="width: 500px; height: 300px;"></a>
+            </div>
+          </div>
+        </div>
     </body>
   </head>
 </html>
