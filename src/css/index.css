@@ -1,0 +1,80 @@
+body {
+  font-family: sans-serif;
+  background: whitesmoke;
+  color: rgb(0, 0, 0);
+}
+
+h1 {
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+small {
+  position: absolute;
+  right: 4em;
+  font-size: 12px;
+}
+
+h3 {
+ position: relative;
+ top: 5em;
+}
+
+div.homepage {
+  z-index: 2;
+  position: relative;
+}
+
+.home {
+  position: absolute;
+  top: 8px;
+  right: 17em;
+  font-size: 18px;
+}
+
+div.user-login {
+  z-index: 2;
+  position: relative;
+}
+
+ul.user-unlogin {
+  margin-bottom: 12px;
+}
+
+div.user-register {
+  z-index: 2;
+  position: relative;
+}
+
+div.about-company {
+  z-index: 2;
+  position: relative;
+}
+
+.login {
+  position: absolute;
+  top: 8px;
+  right: 12em;
+  font-size: 18px;
+}
+
+.register {
+  position: absolute;
+  top: 8px;
+  right: 6em;
+  font-size: 18px;
+}
+
+.about {
+  position: absolute;
+  top: 8px;
+  right: 1em;
+  font-size: 18px;
+}

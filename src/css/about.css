@@ -1,0 +1,9 @@
+div.paragraph {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 5em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 11px;
+}

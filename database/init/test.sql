@@ -1,1 +1,0 @@
-INSERT INTO signUpTable(username, email, password) VALUES("respawm", "ersin@gmail.com", "1231231");

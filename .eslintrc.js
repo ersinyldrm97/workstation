@@ -9,11 +9,15 @@ module.exports = {
            files: ["*.html"],
            parser: "@html-eslint/parser",
            extends: ["plugin:@html-eslint/recommended"],
+           rules: {
+            "max-len": "off"
+           }
         }
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
+        
     }
 }
