@@ -2,7 +2,8 @@
   "name": "js",
   "version": "1.0.0",
   "description": "A JavaScript project",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node ./node_modules/parcel-bundler/bin/cli serve ./src/index.html --port 8080",
     "build": "node ./node_modules/parcel-bundler/bin/cli build ./src/index.html --out-dir ./dist/",
@@ -18,13 +19,19 @@
   "devDependencies": {
     "@html-eslint/eslint-plugin": "^0.17.2",
     "@html-eslint/parser": "^0.17.1",
+    "babel-cli": "^6.26.0",
+    "broccoli-babel-transpiler": "^7.8.1",
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-sql": "^2.3.2",
     "parcel-bundler": "^1.8.1"
   },
   "dependencies": {
-    "pg": "^8.11.1"
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.18.2",
+    "pg": "^8.11.1",
+    "pg-format": "^1.0.4"
   }
 }
