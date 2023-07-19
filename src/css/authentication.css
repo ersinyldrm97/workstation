@@ -117,3 +117,8 @@ span.forgotpassword a {
 a:hover {
   cursor: pointer;
 }
+
+nav { 
+  display: inline;
+  text-align: center;
+}
